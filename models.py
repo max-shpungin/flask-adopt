@@ -34,7 +34,7 @@ class Pet(db.Model):
 
     age = db.Column(
         db.String(6),
-        db.CheckConstraint('baby', 'young', 'adult', 'senior'), # TODO: check syntax
+        db.CheckConstraint('baby' or 'young' or 'adult' or 'senior'), # TODO: check syntax
         nullable=False
     )
 
@@ -48,6 +48,8 @@ class Pet(db.Model):
         nullable=False,
         default=True
     )
+
+
 
 
 
