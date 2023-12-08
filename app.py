@@ -2,10 +2,10 @@
 
 import os
 
-from flask import Flask
+from flask import Flask, render_template, redirect, request
 from flask_debugtoolbar import DebugToolbarExtension
 
-from models import connect_db
+from models import connect_db, Pet
 
 app = Flask(__name__)
 
@@ -22,3 +22,21 @@ connect_db(app)
 # app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
 toolbar = DebugToolbarExtension(app)
+
+
+@app.get("/")
+def display_homepage():
+    """Shows page about pet details."""
+    pets = Pet.query.all()
+
+    return render_template("list.html", pets=pets)
+
+@app.route("/add", methods=["GET", "POST"])
+def add_pet():
+    """Processes form submission for adding new pets."""
+
+    form = AddPetForm()
+
+    if form.
+
+
