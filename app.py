@@ -42,14 +42,12 @@ def add_pet():
         species = form.species.data
         photo_url = form.photo_url.data
         age = form.age.data
-        available = form.available.data
 
-        new_pet = Pet.add(
+        new_pet = Pet(
             name= name,
             species=species,
             photo_url=photo_url,
             age=age,
-            available=available
         )
 
         db.session.add(new_pet)
@@ -59,6 +57,6 @@ def add_pet():
         return redirect('/')
 
     else: #we're explicit because we want to be leave us alone
-        return render_template('/add-pet.html')
+        return render_template('/add-pet.html', form=form)
 
 
