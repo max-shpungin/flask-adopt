@@ -10,6 +10,10 @@ db = SQLAlchemy()
 class Pet(db.Model):
     __tablename__ = "pets"
 
+    __tableargs__ = (
+        db.CheckConstraint
+    )
+
     id = db.Column(
         db.Integer,
         primary_key = True,
@@ -34,7 +38,7 @@ class Pet(db.Model):
 
     age = db.Column(
         db.String(6),
-        db.CheckConstraint('baby' or 'young' or 'adult' or 'senior'), # TODO: check syntax
+        db.CheckConstraint("age IN ('baby', 'young', 'adult', 'senior')"),
         nullable=False
     )
 

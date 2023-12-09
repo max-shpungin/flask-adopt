@@ -2,7 +2,7 @@
 
 import os
 
-from flask import Flask, render_template, redirect, request,flash
+from flask import Flask, render_template, redirect, request, flash
 from flask_debugtoolbar import DebugToolbarExtension
 
 from models import connect_db, db, Pet
